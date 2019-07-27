@@ -1,32 +1,29 @@
 {
-  "name": "spotify-recommender",
-  "version": "0.1.0",
-  "private": true,
+  "name": "project-template",
+  "version": "1.0.0",
+  "description": "# Setup",
+  "main": "server.js",
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "@tensorflow/tfjs-node": "1.2.3",
+    "concurrently": "4.1.1",
+    "express": "4.17.1",
+    "jquery": "^3.4.1",
+    "lodash": "4.17.11",
+    "mongoose": "^5.6.1",
+    "node-spotify-api": "1.1.1",
+    "react-particles-js": "^2.7.0",
+    "spotify-web-api-node": "4.0.0"
   },
+  "engines": {
+    "node": "10.x"
+  },
+  "devDependencies": {},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\"",
+    "start": "node server.js",
+    "postinstall": "cd client && npm i && npm run build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "author": "",
+  "license": "ISC"
 }

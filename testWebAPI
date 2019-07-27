@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+if [[ -z $1 ]]; then
+  echo "Usage: ./test <model> <method>"
+  echo "  <model>: the model you are testing. For example if you are testing 'localhost:3000/shops'"
+  echo "           then <model> would be 'shops'"
+  echo "  <method>: the http method to make an HTTP request with. The following are the"
+  echo "            available <method>s: "
+  echo "   new "
+  echo "     makes GET request to <model>/new and saves the output in ./sample.json"
+  echo "   get <param>"
+  echo "     makes GET request to <model>/<param>"
+  echo "   get-all "
+  echo "     makes GET request to <model>"
+  echo "   post <file>"
+  echo "     makes POST request to <model> and adds contents of <file> as body of request"
+  echo "   put <param> <file>"
+  echo "     makes PUT request to <model>/<param> and adds contest of <file> as body of request"
+  echo "   delete <param>"
+  echo "     makes DELETE request to <model>/<param>"
+  echo ""
+  echo " Example: "
+  echo ""
+  echo "  Test GET request to 'locallhost:3000/shops':"
+  echo ""
+  echo "    ./test shops get-all"
+  echo ""
+  echo "  Test GET request to 'locallhost:3000/shops/new':"
+  echo ""
+  echo "    ./test shops new"
+  echo "  (note this saves the results in ./sample.json)"
+  echo ""
+  echo "  Test POST request to 'locallhost:3000/shops':"
+  echo ""
+  echo "    ./test shops post ./sample.json"
+fi
+
+url="http://localhost:3000$1"
+
+shift
+
+function makeRequest() {
+  method="$1"
+  route="$url/$2"
+  body="$3"
+
+  echo "$method $route $body" >&2
+
+  curl -s -w "\nSTATUS: %{http_code}" -X $method $route --header "Content-Type: application/json" --data "$body"
+}
+
+case "$1" in
+  "new")
+    makeRequest "GET" "$1" | grep -v "STATUS" > ./sample.json && cat ./sample.json
+    ;;
+  "post")
+    makeRequest "POST" "" "$(cat $2)"
+    ;;
+  "put")
+    makeRequest "PUT" "$2" "$(cat $3)"
+    ;;
+  "get")
+    makeRequest "GET" "$2" ""
+    ;;
+  "get-all")
+    makeRequest "GET" "" ""
+    ;;
+  "delete")
+    makeRequest "DELETE" "$2" ""
+esac

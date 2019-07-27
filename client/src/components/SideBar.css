@@ -1,30 +1,30 @@
 /* Container for sidebar */
 .SideBarContainer {
     max-width: 20vw;
-    background: #1F1F1F;
-    height: 90vh;
+    background: black;
+    height: 89.2vh;
     display: flex;
     padding: 1vw;
     flex-direction: column;
     justify-content: space-evenly;
+
 }
 
 /* Container for user description */
 /* H2 headings of side bar descriptions */
 .SideBarDescription h2{
-    font-size: 20px;
+    font-size: 15px;
     margin-top: 3vh;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
     color: #4D34A8;
-    font-family: monospace;
+    font-family: Verdana, sans-serif;
 }
 
 /* profile picture styl;es */
 .profileImg img{
-    width: 19vw;  
+    width: 19vw;
     border-radius: 5px;
     border: 4px solid #383838;
 }
-

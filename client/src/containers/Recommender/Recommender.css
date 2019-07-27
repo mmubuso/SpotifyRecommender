@@ -1,0 +1,28 @@
+#RecommenderContainer {
+  display:flex;
+  flex-direction:row;
+  /* background: #1F1F1F; */
+  height: 93vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.RecommenderSubContianer {
+  padding: 20px;
+  margin: 5px;
+  height: 80vh;
+  /* border-style: solid;
+  border-width: 2px;
+  border-color: #4D34A8; */
+  overflow: auto;
+}
+
+.title_recommended {
+  color: white;
+  font-size: 20pt;
+}
+
+.title_playlist {
+  color: white;
+  font-size: 20pt;
+}

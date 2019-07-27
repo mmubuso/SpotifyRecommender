@@ -1,0 +1,12 @@
+#PlayListContainer {
+  width: 30vw;
+  /* background: #1F1F1F; */
+  margin-top: 20px;
+  height: 70vh;
+  /* padding: 1vw; */
+  border-style: solid;
+  border-width: 2px;
+  border-color: #4D34A8;
+  overflow: auto;
+
+}
