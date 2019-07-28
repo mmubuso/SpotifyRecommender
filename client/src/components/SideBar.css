@@ -1,6 +1,6 @@
 /* Container for sidebar */
 .SideBarContainer {
-    max-width: 20vw;
+    width: 20vw;
     background: black;
     height: 89.2vh;
     display: flex;

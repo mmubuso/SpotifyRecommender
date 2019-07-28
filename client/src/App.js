@@ -1,7 +1,7 @@
-import React, {Component } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/NavBar'
-import MainBody from './components/MainBody'
+import MainBody from './containers/MainBody/MainBody'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import SideBar from './components/SideBar'
 import * as $ from "jquery";
@@ -9,50 +9,50 @@ import hash from "./msc/hash";
 import Particles from 'react-particles-js';
 import ParticlesComponent from './components/ParticlesComponent'
 
-class App extends Component  {
-// render(){
-//   return (<div>
-//     <div
-//       style={{
-//         position: "absolute",
-//         top: 0,
-//         left: 0,
-//         width: "100%",
-//         height: "100%"
-//       }}
-//     >
-//       <ParticlesComponent />
-//       <div
-//         style={{
-//           position: "absolute",
-//           top: 0,
-//           left: 0,
-//           width: "100%",
-//           height: "100%"
-//         }}
-//       >
-//
-//       <BrowserRouter>
-//                 <div className="App">
-//                   <NavBar></NavBar>
-//                   <div id="info">
-//                   <SideBar email = {"test"} prof_pic = {"test"}  display_name = {"test"} followers = {0}></SideBar>
-//                   <MainBody></MainBody>
-//                   </div>
-//                 </div>
-//               </BrowserRouter>
-//       </div>
-//     </div>
-//   </div>
-//   );
-// }
-//
-//
-//
+class App extends Component {
+  // render(){
+  //   return (<div>
+  //     <div
+  //       style={{
+  //         position: "absolute",
+  //         top: 0,
+  //         left: 0,
+  //         width: "100%",
+  //         height: "100%"
+  //       }}
+  //     >
+  //       <ParticlesComponent />
+  //       <div
+  //         style={{
+  //           position: "absolute",
+  //           top: 0,
+  //           left: 0,
+  //           width: "100%",
+  //           height: "100%"
+  //         }}
+  //       >
+  //
+  //       <BrowserRouter>
+  //                 <div className="App">
+  //                   <NavBar></NavBar>
+  //                   <div id="info">
+  //                   <SideBar email = {"test"} prof_pic = {"test"}  display_name = {"test"} followers = {0}></SideBar>
+  //                   <MainBody></MainBody>
+  //                   </div>
+  //                 </div>
+  //               </BrowserRouter>
+  //       </div>
+  //     </div>
+  //   </div>
+  //   );
+  // }
+  //
+  //
+  //
 
 
 
- // render() {return(
+  // render() {return(
   // <BrowserRouter>
   //   <div className="App">
   //
@@ -144,10 +144,10 @@ class App extends Component  {
           followers: data.followers.total,
         });
 
-    },
-    error: function(data) {
-      console.log("failed data: " + data);
-  }
+      },
+      error: function (data) {
+        console.log("failed data: " + data);
+      }
     });
   }
 
@@ -159,46 +159,46 @@ class App extends Component  {
         {!this.state.token && (
           <a
             className="btn btn--loginApp-link"
-            href= {this.state.authEndpoint+ 'client_id=' + this.state.clientId + '&redirect_uri=' + this.state.redirectUri + '&scope=' + this.state.scopes.join("%20") + '&response_type=token&show_dialog=true'}
+            href={this.state.authEndpoint + 'client_id=' + this.state.clientId + '&redirect_uri=' + this.state.redirectUri + '&scope=' + this.state.scopes.join("%20") + '&response_type=token&show_dialog=true'}
           >
             Login to Spotify
           </a>
         )}
 
         {this.state.token && (
-          // <div
-          //   style={{
-          //     position: "absolute",
-          //     top: 0,
-          //     left: 0,
-          //     width: "100%",
-          //     height: "100%"
-          //   }}
-          // >
-          //   <ParticlesComponent />
-          //   <div
-          //     style={{
-          //       position: "absolute",
-          //       top: 0,
-          //       left: 0,
-          //       width: "100%",
-          //       height: "100%"
-          //     }}
-          //   >
-
-          <BrowserRouter>
-            <div className="App">
-              <NavBar></NavBar>
-              <div id="info">
-              <SideBar email = {this.state.email} prof_pic = {this.state.prof_pic}  display_name = {this.state.display_name} followers = {this.state.followers}></SideBar>
-              <MainBody></MainBody>
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%"
+            }}
+          >
+            <ParticlesComponent />
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%"
+              }}
+            >
+              <div className="App">
+                <NavBar />
+                <div id="info">
+                  <SideBar
+                    email={this.state.email}
+                    prof_pic={this.state.prof_pic}
+                    display_name={this.state.display_name}
+                    followers={this.state.followers} />
+                  <MainBody token={this.state.token} />
+                </div>
               </div>
             </div>
-          </BrowserRouter>
-
-        //   </div>
-        // </div>
-       )}
+          </div>
+        )}
       </div>
     );
   }
